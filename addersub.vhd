@@ -4,7 +4,7 @@ use IEEE.std_logic_unsigned;
 
 ENTITY addersub IS
 	PORT (
-				instr		: IN STD_LOGIC;
+				instr		: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 				a, b		: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 				dataout	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 				overflow	: OUT STD_LOGIC
@@ -29,12 +29,14 @@ BEGIN
 	
 	PROCESS(instr)
 	BEGIN
-		if (instr = '0') then --add
+		if (instr = "00") then --add
 			a_adder <= a;
 			b_adder <= b;
-		elsif (instr= '1') then --subtract
+		elsif (instr= "01") then --subtract
 			a_adder <= a;
 			b_adder <= NOT b + 1;
+		elsif (instr = "10") then
+			s(15 DOWNTO 0) <= a XOR b;
 		end if;
 	end process;
 	

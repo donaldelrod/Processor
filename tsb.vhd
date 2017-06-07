@@ -2,10 +2,11 @@ library IEEE;
 use ieee.std_logic_1164;
 
 ENTITY tsb IS
+	GENERIC(N : INTEGER := 15)
 	PORT (
-				D			: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				enable	: IN STD_LOGIC;
-				Q			: OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+				D			: IN STD_LOGIC_VECTOR(N DOWNTO 0);
+				enable		: IN STD_LOGIC;
+				Q			: OUT STD_LOGIC_VECTOR(N DOWNTO 0)
 	);
 	
 END tsb;
